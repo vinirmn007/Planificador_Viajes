@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "Loja",
+        "pais": "Ecuador",
+        "region": "Sierra",
+        "clima": "Frio",
+        "descripcion": "Nada"
+    },
+    {
+        "id": 2,
+        "nombre": "Cuenca",
+        "pais": "Ecuador",
+        "region": "Sierra",
+        "clima": "Frio",
+        "descripcion": "Nada"
+    },
+    {
+        "id": 3,
+        "nombre": "Quito",
+        "pais": "Ecuador",
+        "region": "Sierra",
+        "clima": "Frio",
+        "descripcion": "Nada"
+    }
+]
