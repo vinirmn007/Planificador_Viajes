@@ -1,12 +1,14 @@
 package com.viajes.models;
 
+import java.util.Objects;
+
 public class Carretera {
     private Integer id;
     private String nombre;
     private double distancia;
     private double tiempo;
     private String tipoCarretera;
-    private Integer oigenId;
+    private Integer origenId;
     private Integer destinoId;
 
     public Carretera() {
@@ -53,11 +55,11 @@ public class Carretera {
     }
 
     public Integer getOrigenId() {
-        return this.oigenId;
+        return this.origenId;
     }
 
-    public void setOrigenId(Integer oigenId) {
-        this.oigenId = oigenId;
+    public void setOrigenId(Integer origenId) {
+        this.origenId = origenId;
     }
 
     public Integer getDestinoId() {
@@ -66,5 +68,20 @@ public class Carretera {
 
     public void setDestinoId(Integer destinoId) {
         this.destinoId = destinoId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Carretera carretera = (Carretera) obj;
+        return id.equals(carretera.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -1,6 +1,5 @@
 package com.viajes.estructures.graph;
 
-import com.viajes.estructures.exception.OverFlowException;
 import com.viajes.estructures.list.LinkedList;
 
 public abstract class Graph {

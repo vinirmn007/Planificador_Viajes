@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import com.viajes.controller.dao.services.CarreteraServices;
 import com.viajes.controller.dao.services.CiudadServices;
 import com.viajes.controller.dao.services.GraphServices;
-import com.viajes.estructures.graph.GraphLabelNotDirect;
 import com.viajes.models.Carretera;
 import com.viajes.models.Ciudad;
 
@@ -61,12 +60,7 @@ public class CarreteraAPI {
             cs.getCarretera().setOrigenId(Integer.parseInt(map.get("origen").toString()));
             cs.getCarretera().setDestinoId(Integer.parseInt(map.get("destino").toString()));
             cs.save();
-
-            Ciudad origen = cds.get(Integer.parseInt(map.get("origen").toString()));
-            Ciudad destino = cds.get(Integer.parseInt(map.get("destino").toString()));
-
-            gs.saveCityGraph(origen, destino, cs.getCarretera().getTiempo());
-
+            
             res.put("msg", "OK");
             res.put("data", "Carretera registrada correctamente");
 

@@ -1,41 +1,56 @@
 package com.viajes.controller.dao.services;
 
+import java.util.HashMap;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.viajes.controller.dao.GraphDao;
 import com.viajes.estructures.graph.GraphLabelNotDirect;
 import com.viajes.models.Ciudad;
 
 public class GraphServices {
-    GraphLabelNotDirect graph;
-    CiudadServices cs = new CiudadServices();
+    GraphDao obj;
 
     public GraphServices(){
-        this.graph = new GraphLabelNotDirect();
+        this.obj = new GraphDao();
     }
 
-    public GraphLabelNotDirect getGraph() {
-        return graph;
+    public GraphLabelNotDirect getGraph() throws Exception {
+        return this.obj.getGraph();
     }
 
     public void setGraph(GraphLabelNotDirect graph) {
-        this.graph = graph;
-    }
-
-    public void saveCityGraph(Ciudad origen, Ciudad destino, Double peso) throws Exception {
-        this.graph = new GraphLabelNotDirect(cs.getListAll().getSize(), Ciudad.class);
-        this.graph.labelVertex(origen.getId(), origen);
-        this.graph.labelVertex(destino.getId(), destino);
-        this.graph.addEmptyLabels(new Ciudad());
-        this.graph.addEdgeLabel(origen, destino, peso.floatValue());
-        this.graph.saveGraph();
+        this.obj.setGraph(graph);
     }
 
     public JSONObject graphJson() throws Exception {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(this.graph.readGraph());
-        return json;
+        return this.obj.graphJson();
     }
 
+    public void createGraph() throws Exception {
+        this.obj.createGraph();
+    }
 
+    public Integer[] getMinPath(String algoritmo, Integer origen, Integer destino) throws Exception {
+        switch (algoritmo) {
+            case "bellman":
+                //return this.getGraph().minPathBellman(origen, destino);
+            case "floyd":
+                return this.getGraph().minPathFloyd(origen, destino);
+            default:
+                return null;
+        }
+    }
+
+    public Float getMinWeight(String algoritmo, Integer origen, Integer destino) throws Exception {
+        switch (algoritmo) {
+            case "bellman":
+                //return this.getGraph().minPathBellman(origen, destino);
+            case "floyd":
+                return this.getGraph().minWeightFloyd(origen, destino);
+            default:
+                return null;
+        }
+    }
 }

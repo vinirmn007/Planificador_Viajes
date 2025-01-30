@@ -1,5 +1,7 @@
 package com.viajes.models;
 
+import java.util.Objects;
+
 public class Ciudad {
     private Integer id;
     private String nombre;
@@ -79,6 +81,21 @@ public class Ciudad {
 
     @Override
     public String toString() {
-        return "nombre: "+this.nombre;
+        return "nombre: " + this.nombre;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Ciudad ciudad = (Ciudad) obj;
+        return id.equals(ciudad.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
