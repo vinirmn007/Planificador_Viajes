@@ -1,55 +1,56 @@
 package com.viajes.models;
 
-import com.viajes.controller.dao.GraphDao;
-import com.viajes.controller.dao.services.CiudadServices;
-import com.viajes.controller.dao.services.GraphServices;
-import com.viajes.estructures.graph.GraphDirect;
-import com.viajes.estructures.graph.GraphLabelNotDirect;
 import com.viajes.estructures.graph.GraphNotDirect;
 
 public class prueba {
+    public static GraphNotDirect createGraph(int n) throws Exception {
+        GraphNotDirect graph = new GraphNotDirect(n);
+
+        for (int i = 1; i < n; i++) {
+            float w = (float) (Math.random() * 10);
+            graph.addEdge(i, i + 1, w); 
+        }
+
+        for (int i = 1; i <= n; i++) {
+            int randomVertex;
+            do {
+                randomVertex = (int) (Math.random() * n) + 1;
+            } while (randomVertex == i);
+
+            float w = (float) (Math.random() * 10);
+            graph.addEdge(i, randomVertex, w);
+        }
+
+        return graph;
+    }
+
+    public static Double calcTime(GraphNotDirect graph, Integer origin, Integer destino, Integer type)
+            throws Exception {
+        long start = System.nanoTime();
+        switch (type) {
+            case 1:
+                graph.minPathFloyd(origin, destino);
+                break;
+            case 2:
+                graph.minPathBellmanFord(origin, destino);
+                break;
+            default:
+                break;
+        }
+        long end = System.nanoTime();
+        return (double) (end - start)/1000;
+    }
+
     public static void main(String[] args) throws Exception {
-        CiudadServices ciudadServices = new CiudadServices();
-        /*Ciudad ciudad1 = ciudadServices.get(1);
-        Ciudad ciudad2 = ciudadServices.get(2);
-        Ciudad ciudad3 = ciudadServices.get(3);
-        Ciudad ciudad4 = ciudadServices.get(4);
-        Ciudad ciudad5 = ciudadServices.get(5);
-        Ciudad ciudad6 = ciudadServices.get(6);
+        GraphNotDirect graph = createGraph(10);
+        GraphNotDirect graph2 = createGraph(20);
+        GraphNotDirect graph3 = createGraph(30);
 
-        //.out.println(ciudad1);
-
-        GraphLabelNotDirect<Ciudad> graph = new GraphLabelNotDirect<Ciudad>(4, Ciudad.class);
-        graph.labelVertex(1, ciudad1);
-        graph.labelVertex(2, ciudad2);
-        graph.labelVertex(3, ciudad3);
-        graph.labelVertex(4, ciudad4);
-        graph.addEdgeLabel(ciudad1, ciudad2, 10.0f);
-        graph.addEdgeLabel(ciudad1, ciudad3, 5.0f);
-        graph.addEdgeLabel(ciudad2, ciudad3, 30.0f);
-        graph.addEdgeLabel(ciudad3, ciudad4, 100.0f);
-
-        Integer[] path = graph.minPathFloyd(4, 2);
-        for (int i = 0; i < path.length; i++) {
-            System.out.println(path[i]);
-        }
-
-        Integer[] path2 = graph.BellmanFord(4, 2);
-        for (int i = 0; i < path2.length; i++) {
-            System.out.println(path2[i]);
-        }*/
-
-        GraphServices gs = new GraphServices();
-        GraphLabelNotDirect graph = gs.getGraph();
-        Integer[] path = graph.minPathFloyd(3, 1);
-        System.out.println("Floyd");
-        for (int i = 0; i < path.length; i++) {
-            System.out.println(path[i]);
-        }
-        System.out.println("Bellman");
-        Integer[] path2 = graph.minPathBellmanFord(3, 1);
-        for (int i = 0; i < path2.length; i++) {
-            System.out.println(path2[i]);
-        }
+        System.out.println("Floyd 10: " + calcTime(graph, 1, 9, 1) + " micro seg.");
+        System.out.println("Bellman 10: " + calcTime(graph, 1, 9, 2) + " micro seg.");
+        System.out.println("Floyd 20: " + calcTime(graph2, 1, 19, 1) + " micro seg.");
+        System.out.println("Bellman 20: " + calcTime(graph2, 1, 19, 2) + " micro seg.");
+        System.out.println("Floyd 30: " + calcTime(graph3, 1, 29, 1) + " micro seg.");
+        System.out.println("Bellman 30: " + calcTime(graph3, 1, 29, 2) + " micro seg.");
     }
 }

@@ -80,7 +80,7 @@ public class GraphDirect extends Graph {
             if (!isEdge(v1, v2)) {
                 Adyacencia aux = new Adyacencia(v2, w);
                 this.listAdy[v1].add(aux);
-                //System.out.println("Arista " + v1 + " -> " + v2 + " agregada");
+                // System.out.println("Arista " + v1 + " -> " + v2 + " agregada");
                 this.nroEdges++;
             }
         }
@@ -134,7 +134,8 @@ public class GraphDirect extends Graph {
                 for (int i = 1; i <= nroVertex; i++) {
                     for (int j = 1; j <= nroVertex; j++) {
                         if (adjMatrix[i][k] + adjMatrix[k][j] < adjMatrix[i][j]) {
-                            adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j]; // Minimo entre el peso actual y el dela suma de los vertices
+                            adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j]; // Minimo entre el peso actual y el
+                                                                                 // dela suma de los vertices
                         }
                     }
                 }
@@ -148,7 +149,7 @@ public class GraphDirect extends Graph {
     public Integer[][] FloydWarshallPath() throws Exception {
         Integer[][] path = new Integer[nroVertex + 1][nroVertex + 1];
         Float[][] adjMatrix = createAdjmatrix();
-        
+
         for (int i = 1; i <= nroVertex; i++) {
             for (int j = 1; j <= nroVertex; j++) {
                 if (adjMatrix[i][j] != Float.POSITIVE_INFINITY && i != j) {
@@ -158,10 +159,10 @@ public class GraphDirect extends Graph {
                 }
             }
         }
-    
-        for (int k = 1; k <= nroVertex; k++) {  // Nodo intermedio
-            for (int i = 1; i <= nroVertex; i++) {  // Nodo origen
-                for (int j = 1; j <= nroVertex; j++) {  // Nodo destino
+
+        for (int k = 1; k <= nroVertex; k++) { // Nodo intermedio
+            for (int i = 1; i <= nroVertex; i++) { // Nodo origen
+                for (int j = 1; j <= nroVertex; j++) { // Nodo destino
                     if (adjMatrix[i][k] != Float.POSITIVE_INFINITY && adjMatrix[k][j] != Float.POSITIVE_INFINITY) {
                         if (adjMatrix[i][k] + adjMatrix[k][j] < adjMatrix[i][j]) {
                             adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j];
@@ -171,24 +172,24 @@ public class GraphDirect extends Graph {
                 }
             }
         }
-        
+
         return path;
-    }    
+    }
 
     public Integer[] minPathFloyd(Integer v1, Integer v2) throws Exception {
         Integer[] path = new Integer[nroVertex + 1];
         Integer[][] pathMatrix = FloydWarshallPath();
         path[0] = v1;
-            int i = 1;
-            while (v1 != v2) {
-                v1 = pathMatrix[v1][v2];
-                path[i] = v1;
-                i++;
-            }
-            Integer[] pathAux = new Integer[i];
-            for (int j = 0; j < i; j++) {
-                pathAux[j] = path[j];
-            }
+        int i = 1;
+        while (v1 != v2) {
+            v1 = pathMatrix[v1][v2];
+            path[i] = v1;
+            i++;
+        }
+        Integer[] pathAux = new Integer[i];
+        for (int j = 0; j < i; j++) {
+            pathAux[j] = path[j];
+        }
         return pathAux;
     }
 
@@ -225,7 +226,7 @@ public class GraphDirect extends Graph {
                             }
                         }
                     }
-                    
+
                 }
             }
 
