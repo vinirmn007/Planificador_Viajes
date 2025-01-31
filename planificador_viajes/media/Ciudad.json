@@ -5,7 +5,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudad cultural y artística",
+        "descripcion": "Ciudadculturalyartística",
         "latitud": -3.99313,
         "longitud": -79.20422
     },
@@ -15,7 +15,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudad colonial y turística",
+        "descripcion": "Ciudadcolonialyturística",
         "latitud": -2.90055,
         "longitud": -79.00453
     },
@@ -25,7 +25,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Capital de Ecuador",
+        "descripcion": "CapitaldeEcuador",
         "latitud": -0.18065,
         "longitud": -78.46784
     },
@@ -35,7 +35,7 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Ciudad portuaria y comercial",
+        "descripcion": "Ciudadportuariaycomercial",
         "latitud": -2.18991,
         "longitud": -79.88911
     },
@@ -45,7 +45,7 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Ciudad costera y pesquera",
+        "descripcion": "Ciudadcosteraypesquera",
         "latitud": -0.94621,
         "longitud": -80.72892
     },
@@ -55,7 +55,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Capital de Tungurahua",
+        "descripcion": "CapitaldeTungurahua",
         "latitud": -1.24167,
         "longitud": -78.6197
     },
@@ -65,7 +65,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudad histórica en la Sierra",
+        "descripcion": "CiudadhistóricaenlaSierra",
         "latitud": -1.66355,
         "longitud": -78.65464
     },
@@ -75,7 +75,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Conocida como la ciudad blanca",
+        "descripcion": "Conocidacomolaciudadblanca",
         "latitud": 0.35171,
         "longitud": -78.12223
     },
@@ -85,17 +85,17 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Conocida por sus playas",
+        "descripcion": "Conocidaporsusplayas",
         "latitud": 0.9592,
         "longitud": -79.65172
     },
     {
         "id": 10,
-        "nombre": "Santo Domingo",
+        "nombre": "SantoDomingo",
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Puerta de entrada a la Costa",
+        "descripcion": "PuertadeentradaalaCosta",
         "latitud": -0.25365,
         "longitud": -79.17016
     },
@@ -105,7 +105,7 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Capital bananera del mundo",
+        "descripcion": "Capitalbananeradelmundo",
         "latitud": -3.25861,
         "longitud": -79.95312
     },
@@ -115,7 +115,7 @@
         "pais": "Ecuador",
         "region": "Amazonía",
         "clima": "Húmedo",
-        "descripcion": "Puerta de entrada a la Amazonía",
+        "descripcion": "PuertadeentradaalaAmazonía",
         "latitud": -4.06921,
         "longitud": -78.95844
     },
@@ -125,7 +125,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Templado",
-        "descripcion": "Ciudad turística famosa por sus aguas termales",
+        "descripcion": "Ciudadturísticafamosaporsusaguastermales",
         "latitud": -1.39636,
         "longitud": -78.42412
     },
@@ -135,7 +135,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Templado",
-        "descripcion": "Ciudad textil cercana a Ambato",
+        "descripcion": "CiudadtextilcercanaaAmbato",
         "latitud": -1.32836,
         "longitud": -78.53912
     },
@@ -145,8 +145,18 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudad reconocida por su feria de artesanías",
+        "descripcion": "Ciudadreconocidaporsuferiadeartesanías",
         "latitud": -0.95736,
         "longitud": -78.60312
+    },
+    {
+        "id": 16,
+        "nombre": "prueba",
+        "pais": "ec",
+        "region": "sierra",
+        "clima": "calido",
+        "descripcion": "no",
+        "latitud": 2.0,
+        "longitud": 2.0
     }
 ]
