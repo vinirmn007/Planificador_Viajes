@@ -19,6 +19,14 @@
             font-size: 1.25rem;
             margin-top: 20px;
         }
+
+        #route-info {
+            z-index: 1000;
+            background: rgba(0, 123, 255, 0.9); 
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -34,7 +42,7 @@
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title">Planifica tu viaje</h5>
-                <form action="/findRoute" method="POST">
+                <form>
                     <div class="row">
                         <div class="col-md-5 mb-3">
                             <label for="origin" class="form-label">Ciudad de Origen</label>
@@ -56,6 +64,15 @@
                             </select>
                         </div>
 
+                        <div class="col-md-5 mb-3">
+                            <label for="algorit" class="form-label">Ciudad Destino</label>
+                            <select id="algorit" name="algorit" class="form-select" required>
+                                <option value="" disabled selected>Seleccione un algoritmo</option>
+                                <option value="floyd">Floyd-Warshall</option>
+                                <option value="bellman">Bellman-Ford</option>
+                            </select>
+                        </div>
+
                         <div class="col-md-2 d-flex align-items-end">
                             <button type="submit" class="btn btn-success w-100">Buscar Mejor Ruta</button>
                         </div>
@@ -64,7 +81,15 @@
             </div>
         </div>
 
-        <div id="map"></div>
+        <div id="map">
+            <div id="route-info" class="card text-white bg-primary position-absolute top-0 end-0 m-3 d-none" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Ruta Calculada</h5>
+                    <p id="route-details" class="card-text">Mostrando información...</p>
+                    <button id="close-card" class="btn btn-light btn-sm">Cerrar</button>
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade" id="addCityModal" tabindex="-1" aria-labelledby="addCityModalLabel" aria-hidden="true">
             <div class="modal-dialog">

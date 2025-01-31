@@ -80,6 +80,7 @@ public class GraphDirect extends Graph {
             if (!isEdge(v1, v2)) {
                 Adyacencia aux = new Adyacencia(v2, w);
                 this.listAdy[v1].add(aux);
+                //System.out.println("Arista " + v1 + " -> " + v2 + " agregada");
                 this.nroEdges++;
             }
         }
@@ -133,8 +134,7 @@ public class GraphDirect extends Graph {
                 for (int i = 1; i <= nroVertex; i++) {
                     for (int j = 1; j <= nroVertex; j++) {
                         if (adjMatrix[i][k] + adjMatrix[k][j] < adjMatrix[i][j]) {
-                            adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j]; // Minimo entre el peso actual y el de
-                                                                                 // la suma de los vertices
+                            adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j]; // Minimo entre el peso actual y el dela suma de los vertices
                         }
                     }
                 }
@@ -148,41 +148,48 @@ public class GraphDirect extends Graph {
     public Integer[][] FloydWarshallPath() throws Exception {
         Integer[][] path = new Integer[nroVertex + 1][nroVertex + 1];
         Float[][] adjMatrix = createAdjmatrix();
-        try {
-            for (int k = 1; k <= nroVertex; k++) {
-                for (int j = 1; j <= nroVertex; j++) {
-                    path[k][j] = j;
+        
+        for (int i = 1; i <= nroVertex; i++) {
+            for (int j = 1; j <= nroVertex; j++) {
+                if (adjMatrix[i][j] != Float.POSITIVE_INFINITY && i != j) {
+                    path[i][j] = j;
+                } else {
+                    path[i][j] = null;
                 }
             }
-            for (int k = 1; k <= nroVertex; k++) {
-                for (int i = 1; i <= nroVertex; i++) {
-                    for (int j = 1; j <= nroVertex; j++) {
+        }
+    
+        for (int k = 1; k <= nroVertex; k++) {  // Nodo intermedio
+            for (int i = 1; i <= nroVertex; i++) {  // Nodo origen
+                for (int j = 1; j <= nroVertex; j++) {  // Nodo destino
+                    if (adjMatrix[i][k] != Float.POSITIVE_INFINITY && adjMatrix[k][j] != Float.POSITIVE_INFINITY) {
                         if (adjMatrix[i][k] + adjMatrix[k][j] < adjMatrix[i][j]) {
+                            adjMatrix[i][j] = adjMatrix[i][k] + adjMatrix[k][j];
                             path[i][j] = path[i][k];
                         }
                     }
                 }
             }
-        } catch (Exception e) {
-            // TODO: handle exception
         }
+        
         return path;
-    }
+    }    
 
     public Integer[] minPathFloyd(Integer v1, Integer v2) throws Exception {
         Integer[] path = new Integer[nroVertex + 1];
         Integer[][] pathMatrix = FloydWarshallPath();
-        try {
-            path[0] = v1;
+        path[0] = v1;
             int i = 1;
             while (v1 != v2) {
                 v1 = pathMatrix[v1][v2];
                 path[i] = v1;
                 i++;
             }
-        } catch (Exception e) {
-        }
-        return path;
+            Integer[] pathAux = new Integer[i];
+            for (int j = 0; j < i; j++) {
+                pathAux[j] = path[j];
+            }
+        return pathAux;
     }
 
     public Float minWeightFloyd(Integer v1, Integer v2) throws Exception {
@@ -195,7 +202,7 @@ public class GraphDirect extends Graph {
         return weight;
     }
 
-    public Integer[] BellmanFord(Integer origen, Integer destino) {
+    public Integer[] minPathBellmanFord(Integer origen, Integer destino) throws Exception {
         Float[] dist = new Float[nroVertex + 1];
         Integer[] predecesores = new Integer[nroVertex + 1];
         Integer[] path = new Integer[nroVertex + 1];
@@ -207,15 +214,18 @@ public class GraphDirect extends Graph {
             dist[origen] = 0.0f;
             for (int i = 1; i < nroVertex; i++) {
                 for (int j = 1; j <= nroVertex; j++) {
-                    Adyacencia[] listAdy = this.listAdy[j].toArray();
-                    for (Adyacencia ady : listAdy) {
-                        Integer dest = ady.getDestino();
-                        Float weight = ady.getWeight();
-                        if (dist[j] != Float.POSITIVE_INFINITY && dist[j] + weight < dist[dest]) {
-                            dist[dest] = dist[j] + weight;
-                            predecesores[dest] = j;
+                    Adyacencia[] listAdy = this.getListAdy()[j].toArray();
+                    if (listAdy != null) {
+                        for (Adyacencia ady : listAdy) {
+                            Integer dest = ady.getDestino();
+                            Float weight = ady.getWeight();
+                            if (dist[j] != Float.POSITIVE_INFINITY && dist[j] + weight < dist[dest]) {
+                                dist[dest] = dist[j] + weight;
+                                predecesores[dest] = j;
+                            }
                         }
                     }
+                    
                 }
             }
 
@@ -225,6 +235,7 @@ public class GraphDirect extends Graph {
 
             path = recreatePath(predecesores, origen, destino);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return path;
     }
@@ -244,5 +255,42 @@ public class GraphDirect extends Graph {
             pathAux[j] = path[i - j - 1];
         }
         return pathAux;
+    }
+
+    public Float minWeightBellmanFord(Integer origen, Integer destino) {
+        Float[] dist = new Float[nroVertex + 1];
+        Integer[] predecesores = new Integer[nroVertex + 1];
+        Float weight = 0.0f;
+        try {
+            for (int i = 1; i <= nroVertex; i++) {
+                dist[i] = Float.POSITIVE_INFINITY;
+                predecesores[i] = null;
+            }
+            dist[origen] = 0.0f;
+            for (int i = 1; i < nroVertex; i++) {
+                for (int j = 1; j <= nroVertex; j++) {
+                    Adyacencia[] listAdy = this.getListAdy()[j].toArray();
+                    if (listAdy != null) {
+                        for (Adyacencia ady : listAdy) {
+                            Integer dest = ady.getDestino();
+                            Float w = ady.getWeight();
+                            if (dist[j] != Float.POSITIVE_INFINITY && dist[j] + w < dist[dest]) {
+                                dist[dest] = dist[j] + w;
+                                predecesores[dest] = j;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (dist[destino] == Float.POSITIVE_INFINITY) {
+                throw new Exception("No existe camino");
+            }
+
+            weight = dist[destino];
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return weight;
     }
 }

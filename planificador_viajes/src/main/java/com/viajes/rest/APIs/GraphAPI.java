@@ -26,6 +26,7 @@ public class GraphAPI {
             
             map.put("msg", "OK");
             map.put("data", gs.graphJson());
+            System.out.println(map.toString());
         } catch (Exception e) {
             map.put("msg", "Error");
             map.put("data", e.toString());

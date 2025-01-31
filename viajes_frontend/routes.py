@@ -11,8 +11,13 @@ def home():
     data = r.json().get('data')
     return render_template('index.html', cities=data)
 
-@routes.route('/findRoute', methods=['POST'])
-def findRoute():
+@routes.route('/findRoute/<algoritmo>/<origen>/<destino>')
+def findRoute(algoritmo, origen, destino):
+    url = URL + f'grafo/minPath/{algoritmo}/{origen}/{destino}'
+
+    r = requests.get(url)
+    data = r.json().get('data')
+    
     return render_template('findRoute.html')
 
 @routes.route('/city/save', methods=['POST'])

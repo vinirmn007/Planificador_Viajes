@@ -45,7 +45,6 @@ public class CarreteraAPI {
         try {
             CarreteraServices cs = new CarreteraServices();
             CiudadServices cds = new CiudadServices();
-            GraphServices gs = new GraphServices();
 
             if (cds.get(Integer.parseInt(map.get("origen").toString())) == null || cds.get(Integer.parseInt(map.get("destino").toString())) == null) {
                 res.put("msg", "Error");

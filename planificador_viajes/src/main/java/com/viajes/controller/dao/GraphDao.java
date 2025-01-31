@@ -6,15 +6,10 @@ import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import com.google.gson.Gson;
 import com.viajes.controller.dao.services.CarreteraServices;
 import com.viajes.controller.dao.services.CiudadServices;
-import com.viajes.estructures.graph.Adyacencia;
 import com.viajes.estructures.graph.GraphLabelNotDirect;
-import com.viajes.estructures.list.LinkedList;
 import com.viajes.models.Carretera;
 import com.viajes.models.Ciudad;
 
@@ -26,11 +21,7 @@ public class GraphDao {
     }
 
     public GraphLabelNotDirect getGraph() throws Exception {
-        Gson gson = new Gson();
-        this.graph = gson.fromJson(this.readGraph(), GraphLabelNotDirect.class);
-        if (this.graph == null) {
-            this.graph = new GraphLabelNotDirect();
-        }
+        createGraph();
         return graph;
     }
 
@@ -63,43 +54,8 @@ public class GraphDao {
         this.addRoads();
         this.saveGraph();
     }
-    /*
-    public String toJson() {
-        String grafo = "{";
-        try {
-            grafo += "\"nodes\": [";
-            for (int i = 1; i < this.graph.nroVertex()+1; i++) {
-                Ciudad ciudad = (Ciudad) graph.getLabel(i);
-                grafo += String.format("{\"id\": %d, \"nombre\": \"%s\",", ciudad.getId(), ciudad.getNombre());
-                grafo += "\"lat\":" + ciudad.getLatitud() + ",";
-                grafo += "\"long\":" + ciudad.getLongitud() + "}";
-                if (i < this.graph.nroVertex()) {
-                    grafo += ",";   
-                }
-            }
-            grafo += "],";
-            grafo += "\"edges\":[";
-            for (int i = 1; i < this.graph.nroVertex()+1; i++) {
-                LinkedList<Adyacencia> listAdj = graph.adjacents(i);
-                if (!listAdj.isEmpty()) {
-                    Adyacencia[] ady = listAdj.toArray();
-                    for (int j = 0; j < ady.length; j++) {
-                        grafo += String.format("{\"from\": %d, \"to\": %d, \"weight\": \"%f\"}", i, ady[j].getDestino(), ady[j].getWeight());
-                        if (i < this.graph.nroVertex() || j < ady.length-1) {
-                            grafo += ",";
-                        }
-                    }
-                }
-            }
-            grafo += "]";
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-        grafo += "}";
-        return grafo;
-    }*/
 
-    public String toJson() {
+    public HashMap toJson() {
         CiudadServices cs = new CiudadServices();
         CarreteraServices crs = new CarreteraServices();
 
@@ -128,15 +84,16 @@ public class GraphDao {
         }
         grafo.put("edges", edges);
         
-        String json = new Gson().toJson(grafo);
+        //String json = new Gson().toJson(grafo);
         //System.out.println(json);
-        return json;
+        return grafo;
     }
 
     public void saveGraph () throws Exception {
         try {
+            String json = new Gson().toJson(this.toJson());
             FileWriter file = new FileWriter("media/Graph" + ".json");
-            file.write(this.toJson());
+            file.write(json);
             file.flush();
             file.close();
         } catch (Exception e) {
@@ -155,11 +112,5 @@ public class GraphDao {
             // TODO: handle exception
         }
         return sb.toString();
-    }
-
-    public JSONObject graphJson() throws Exception {
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(this.readGraph());
-        return json;
     }
 }

@@ -5,7 +5,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudadculturalyartística",
+        "descripcion": "Ciudad cultural y artística",
         "latitud": -3.99313,
         "longitud": -79.20422
     },
@@ -15,7 +15,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Ciudadcolonialyturística",
+        "descripcion": "Ciudad colonial y turística",
         "latitud": -2.90055,
         "longitud": -79.00453
     },
@@ -25,7 +25,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "CapitaldeEcuador",
+        "descripcion": "Capital de Ecuador",
         "latitud": -0.18065,
         "longitud": -78.46784
     },
@@ -35,7 +35,7 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Ciudadportuariaycomercial",
+        "descripcion": "Ciudad portuaria y comercial",
         "latitud": -2.18991,
         "longitud": -79.88911
     },
@@ -45,7 +45,7 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Ciudadcosteraypesquera",
+        "descripcion": "Ciudad costera y pesquera",
         "latitud": -0.94621,
         "longitud": -80.72892
     },
@@ -55,7 +55,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "CapitaldeTungurahua",
+        "descripcion": "Capital de Tungurahua",
         "latitud": -1.24167,
         "longitud": -78.6197
     },
@@ -65,7 +65,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "CiudadhistóricaenlaSierra",
+        "descripcion": "Ciudad histórica en la Sierra",
         "latitud": -1.66355,
         "longitud": -78.65464
     },
@@ -75,7 +75,7 @@
         "pais": "Ecuador",
         "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "Conocidacomolaciudadblanca",
+        "descripcion": "Conocida como la ciudad blanca",
         "latitud": 0.35171,
         "longitud": -78.12223
     },
@@ -85,19 +85,19 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Conocidaporsusplayas",
+        "descripcion": "Conocida por sus playas",
         "latitud": 0.9592,
         "longitud": -79.65172
     },
     {
         "id": 10,
-        "nombre": "Portoviejo",
+        "nombre": "Santo Domingo",
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "CapitaldeManabí",
-        "latitud": -1.05457,
-        "longitud": -80.45445
+        "descripcion": "Puerta de entrada a la Costa",
+        "latitud": -0.25365,
+        "longitud": -79.17016
     },
     {
         "id": 11,
@@ -105,168 +105,48 @@
         "pais": "Ecuador",
         "region": "Costa",
         "clima": "Cálido",
-        "descripcion": "Capitalbananeradelmundo",
+        "descripcion": "Capital bananera del mundo",
         "latitud": -3.25861,
         "longitud": -79.95312
     },
     {
         "id": 12,
-        "nombre": "SantoDomingo",
-        "pais": "Ecuador",
-        "region": "Costa",
-        "clima": "Cálido",
-        "descripcion": "PuertadeentradaalaCosta",
-        "latitud": -0.25365,
-        "longitud": -79.17016
-    },
-    {
-        "id": 13,
-        "nombre": "Tulcán",
-        "pais": "Ecuador",
-        "region": "Sierra",
-        "clima": "Frío",
-        "descripcion": "CiudadfronterizaconColombia",
-        "latitud": 0.81156,
-        "longitud": -77.71771
-    },
-    {
-        "id": 14,
-        "nombre": "Latacunga",
-        "pais": "Ecuador",
-        "region": "Sierra",
-        "clima": "Frío",
-        "descripcion": "CiudadcercanaalvolcánCotopaxi",
-        "latitud": -0.93333,
-        "longitud": -78.61667
-    },
-    {
-        "id": 15,
-        "nombre": "SantaElena",
-        "pais": "Ecuador",
-        "region": "Costa",
-        "clima": "Cálido",
-        "descripcion": "Famosaporsusplayas",
-        "latitud": -2.23327,
-        "longitud": -80.85957
-    },
-    {
-        "id": 16,
-        "nombre": "Otavalo",
-        "pais": "Ecuador",
-        "region": "Sierra",
-        "clima": "Frío",
-        "descripcion": "Famosaporsumercadoindígena",
-        "latitud": 0.23122,
-        "longitud": -78.26187
-    },
-    {
-        "id": 17,
-        "nombre": "Cayambe",
-        "pais": "Ecuador",
-        "region": "Sierra",
-        "clima": "Frío",
-        "descripcion": "Conocidaporsusbizcochos",
-        "latitud": 0.0419,
-        "longitud": -78.14075
-    },
-    {
-        "id": 18,
         "nombre": "Zamora",
         "pais": "Ecuador",
         "region": "Amazonía",
         "clima": "Húmedo",
-        "descripcion": "PuertadeentradaalaAmazonía",
+        "descripcion": "Puerta de entrada a la Amazonía",
         "latitud": -4.06921,
         "longitud": -78.95844
     },
     {
-        "id": 19,
-        "nombre": "Tena",
+        "id": 13,
+        "nombre": "Baños",
         "pais": "Ecuador",
-        "region": "Amazonía",
-        "clima": "Húmedo",
-        "descripcion": "CapitaldeNapo",
-        "latitud": -0.99636,
-        "longitud": -77.81203
+        "region": "Sierra",
+        "clima": "Templado",
+        "descripcion": "Ciudad turística famosa por sus aguas termales",
+        "latitud": -1.39636,
+        "longitud": -78.42412
     },
     {
-        "id": 20,
-        "nombre": "NuevaLoja",
+        "id": 14,
+        "nombre": "Pelileo",
         "pais": "Ecuador",
-        "region": "Amazonía",
-        "clima": "Húmedo",
-        "descripcion": "ConocidacomoLagoAgrio",
-        "latitud": 0.08517,
-        "longitud": -76.89499
+        "region": "Sierra",
+        "clima": "Templado",
+        "descripcion": "Ciudad textil cercana a Ambato",
+        "latitud": -1.32836,
+        "longitud": -78.53912
     },
     {
-        "id": 21,
-        "nombre": "Puyo",
+        "id": 15,
+        "nombre": "Pujilí",
         "pais": "Ecuador",
-        "region": "Amazonía",
-        "clima": "Húmedo",
-        "descripcion": "CapitaldePastaza",
-        "latitud": -1.49294,
-        "longitud": -78.00284
-    },
-    {
-        "id": 22,
-        "nombre": "SanCristóbal",
-        "pais": "Ecuador",
-        "region": "Galápagos",
-        "clima": "Cálido",
-        "descripcion": "IslaenGalápagos",
-        "latitud": -0.90103,
-        "longitud": -89.60944
-    },
-    {
-        "id": 23,
-        "nombre": "Bogotá",
-        "pais": "Colombia",
-        "region": "Andina",
+        "region": "Sierra",
         "clima": "Frío",
-        "descripcion": "CapitaldeColombia",
-        "latitud": 4.60971,
-        "longitud": -74.08175
-    },
-    {
-        "id": 24,
-        "nombre": "Lima",
-        "pais": "Perú",
-        "region": "Costa",
-        "clima": "Húmedo",
-        "descripcion": "CapitaldePerú",
-        "latitud": -12.04637,
-        "longitud": -77.04279
-    },
-    {
-        "id": 25,
-        "nombre": "BuenosAires",
-        "pais": "Argentina",
-        "region": "Pampa",
-        "clima": "Templado",
-        "descripcion": "CapitaldeArgentina",
-        "latitud": -34.60368,
-        "longitud": -58.38156
-    },
-    {
-        "id": 26,
-        "nombre": "Santiago",
-        "pais": "Chile",
-        "region": "Central",
-        "clima": "Templado",
-        "descripcion": "CapitaldeChile",
-        "latitud": -33.44889,
-        "longitud": -70.66927
-    },
-    {
-        "id": 27,
-        "nombre": "prueba 1",
-        "pais": "ec",
-        "region": "sierra",
-        "clima": "fadsf",
-        "descripcion": "asdfad",
-        "latitud": 2.0,
-        "longitud": 2.0
+        "descripcion": "Ciudad reconocida por su feria de artesanías",
+        "latitud": -0.95736,
+        "longitud": -78.60312
     }
 ]

@@ -38,9 +38,18 @@ public class prueba {
         for (int i = 0; i < path2.length; i++) {
             System.out.println(path2[i]);
         }*/
-        
-        GraphDao graphDao = new GraphDao();
-        GraphLabelNotDirect grafo = graphDao.getGraph();
-        System.out.println(grafo);
+
+        GraphServices gs = new GraphServices();
+        GraphLabelNotDirect graph = gs.getGraph();
+        Integer[] path = graph.minPathFloyd(3, 1);
+        System.out.println("Floyd");
+        for (int i = 0; i < path.length; i++) {
+            System.out.println(path[i]);
+        }
+        System.out.println("Bellman");
+        Integer[] path2 = graph.minPathBellmanFord(3, 1);
+        for (int i = 0; i < path2.length; i++) {
+            System.out.println(path2[i]);
+        }
     }
 }

@@ -24,8 +24,8 @@ public class GraphServices {
         this.obj.setGraph(graph);
     }
 
-    public JSONObject graphJson() throws Exception {
-        return this.obj.graphJson();
+    public HashMap graphJson() throws Exception {
+        return this.obj.toJson();
     }
 
     public void createGraph() throws Exception {
@@ -35,7 +35,7 @@ public class GraphServices {
     public Integer[] getMinPath(String algoritmo, Integer origen, Integer destino) throws Exception {
         switch (algoritmo) {
             case "bellman":
-                //return this.getGraph().minPathBellman(origen, destino);
+                return this.getGraph().minPathBellmanFord(origen, destino);
             case "floyd":
                 return this.getGraph().minPathFloyd(origen, destino);
             default:
@@ -46,7 +46,7 @@ public class GraphServices {
     public Float getMinWeight(String algoritmo, Integer origen, Integer destino) throws Exception {
         switch (algoritmo) {
             case "bellman":
-                //return this.getGraph().minPathBellman(origen, destino);
+                return this.getGraph().minWeightBellmanFord(origen, destino);
             case "floyd":
                 return this.getGraph().minWeightFloyd(origen, destino);
             default:
